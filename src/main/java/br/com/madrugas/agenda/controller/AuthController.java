@@ -14,7 +14,6 @@ import br.com.madrugas.agenda.model.dto.LoginDtoInput;
 import br.com.madrugas.agenda.model.dto.TokenDto;
 import br.com.madrugas.agenda.service.TokenService;
 
-
 @RestController
 @RequestMapping("auth")
 public class AuthController {

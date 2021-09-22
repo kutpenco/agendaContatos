@@ -26,10 +26,15 @@ public class AuthService implements UserDetailsService{
 		if (usuario.isPresent()) {
 			return usuario.get();
 		}
-		throw new UsernameNotFoundException("usuario não encontrado");
+		throw new UsernameNotFoundException("Usuario não encontrado.");
 	}
 
 	public Usuario buscarPorId(Integer id) {
-		return usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
+		return usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ID de Usuario não encontrado."));
+	}
+	
+	public Usuario buscarPorEmail(String username) {
+		return usuarioRepository.findByEmail(username)
+				.orElseThrow(() -> new EntityNotFoundException("Usuário #{username} não encontrado."));
 	}
 }

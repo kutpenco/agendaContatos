@@ -7,4 +7,8 @@ public class EmailDtoInput {
 	public EmailDtoInput (String email) {
 		this.email = email;
 	}
+
+	public String getEmail() {
+		return email;
+	}
 }

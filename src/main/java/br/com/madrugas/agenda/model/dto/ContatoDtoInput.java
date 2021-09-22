@@ -21,4 +21,32 @@ public class ContatoDtoInput {
 		this.telefones = telefones;
 		this.emails = emails;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public LocalDate getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public List<EnderecoDtoInput> getEnderecos() {
+		return enderecos;
+	}
+
+	public List<TelefoneDtoInput> getTelefones() {
+		return telefones;
+	}
+
+	public List<EmailDtoInput> getEmails() {
+		return emails;
+	}
 }

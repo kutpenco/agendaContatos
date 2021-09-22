@@ -34,9 +34,9 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.headers().frameOptions().disable().and()
 		.authorizeRequests().
-		antMatchers(HttpMethod.GET,"/clientes/**","/usuarios/*").
-		permitAll().
-		antMatchers(HttpMethod.GET,"/usuarios/*").
+		//antMatchers(HttpMethod.GET,"/clientes/**","/usuarios/*").
+		//permitAll().
+		antMatchers(HttpMethod.GET,"/agenda/*").
 		permitAll().
 		antMatchers("/h2-console/**")
 		.permitAll().

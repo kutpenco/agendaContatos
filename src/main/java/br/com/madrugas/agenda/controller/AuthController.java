@@ -27,7 +27,9 @@ public class AuthController {
 	
 	@PostMapping
 	public ResponseEntity<TokenDto> autentica(@RequestBody LoginDtoInput formLogin){
-		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(formLogin.getEmail(), formLogin.getSenha()));
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(formLogin.getEmail(),formLogin.getSenha());
+		Authentication authenticate = authenticationManager.authenticate(authentication);
 		String token = tokenService.geraToken(authenticate);
 		return ResponseEntity.ok(new TokenDto(token, "Bearer"));
 	}

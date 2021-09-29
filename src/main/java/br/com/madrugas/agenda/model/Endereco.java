@@ -12,14 +12,13 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String logadouro, bairro, complemento, cidade, estado, pais;
-	private Integer numero;
+	private String logadouro, bairro, complemento, cidade, estado, pais, numero;
 	private TipoEndereco tipoEndereco;
 	private TipoLogradouro tipoLogradouro;
 	@ManyToOne
 	private AgendaContato agendaContato;
 	
-	public Endereco(TipoEndereco tipoEndereco, TipoLogradouro tipoLogradouro, String logadouro, Integer numero,
+	public Endereco(TipoEndereco tipoEndereco, TipoLogradouro tipoLogradouro, String logadouro, String numero,
 			String complemento, String bairro, String cidade, String estado, String pais) {
 		this.tipoEndereco = tipoEndereco;
 		this.tipoLogradouro = tipoLogradouro;
@@ -49,7 +48,7 @@ public class Endereco {
 	public String getEstado() {
 		return estado;
 	}
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 	public String getPais() {

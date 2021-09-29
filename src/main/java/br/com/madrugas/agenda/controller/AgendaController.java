@@ -1,5 +1,7 @@
 package br.com.madrugas.agenda.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,22 +35,24 @@ public class AgendaController {
 	}
 	
 	@GetMapping("contato")
-	public ResponseEntity<?> consultarContato(@RequestParam(value = "Id" , required = true) Integer Id){
-		return ResponseEntity.ok("OK");
+	public List<AgendaContato> consultarContato(){
+		//return ResponseEntity.ok("OK");
+		return contatoRepository.findAll();
 	}
 	
 	@GetMapping("contato/{id}")
-	public ResponseEntity<?> consultarContatoId(@PathVariable Integer id){
-		return ResponseEntity.ok("OK");
+	public List<AgendaContato> consultarContatoId(@PathVariable Integer id){
+		//return ResponseEntity.ok("OK");
+		return contatoRepository.findAllById(id);
 	}
 	
 	@GetMapping("contato/nome/{nome}")
-	public ResponseEntity<?> consultarContatoNome(@PathVariable Integer nome){
-		return ResponseEntity.ok("OK");
+	public List<AgendaContato> consultarContatoNome(@PathVariable String nome){
+		return contatoRepository.findByNomeIgnoreCaseContaining(nome);
 	}
 	
 	@GetMapping("contato/telefone/{numTelefone}")
-	public ResponseEntity<?> consultarContatoNumero(@PathVariable Integer numTelefone){
-		return ResponseEntity.ok("OK");
+	public List<AgendaContato> consultarContatoNumero(@PathVariable String numTelefone){
+		return contatoRepository.findByTelefonesContaining(numTelefone);
 	}
 }

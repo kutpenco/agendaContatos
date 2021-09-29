@@ -1,5 +1,5 @@
-INSERT INTO perfil VALUES(null,'ROLE_USUARIO');
-INSERT INTO perfil VALUES(null,'ROLE_ADM');
+INSERT INTO perfil VALUES(null,'ROLE_USUARIO', 'Usuario Padrão');
+INSERT INTO perfil VALUES(null,'ROLE_ADM', 'Administrador');
 
 INSERT INTO acesso VALUES (null,'Lucas Penco','Penco','lucas.penco@gmail.com',2,'$2b$10$9FamXHwngle8fQTBtypdCOv7BxLPkjHBfvxkeiGuzAPfEG8YJnC/.');
 INSERT INTO acesso VALUES (null,'Pablo Fontes','Pablo','pablo.fontes@gmail.com',1,'$2a$12$WLacrueYXCAAwKb.yjffAet6huXymw/Qo8RFME1BpgeNem8IZgjta');

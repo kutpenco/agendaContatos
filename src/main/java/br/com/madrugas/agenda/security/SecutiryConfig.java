@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -37,13 +38,10 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter {
 		//antMatchers(HttpMethod.GET,"/clientes/**","/usuarios/*").
 		//permitAll().
 		antMatchers(HttpMethod.GET,"/agenda/*").
+		permitAll().antMatchers("/h2-console/**")
+		.permitAll().antMatchers(HttpMethod.POST,"/auth/**").
 		permitAll().
-		antMatchers("/h2-console/**")
-		.permitAll().
-		antMatchers(HttpMethod.POST,"/auth/**").
-		permitAll().
-		anyRequest().
-		authenticated().and().csrf().disable()
+		anyRequest().authenticated().and().csrf().disable()
 		.sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
@@ -51,6 +49,16 @@ public class SecutiryConfig extends WebSecurityConfigurerAdapter {
 		UsernamePasswordAuthenticationFilter.class);
 	}
 
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring()
+	      .antMatchers(
+	        "/v2/api-docs",
+	        "/swagger-resources/**",
+	        "/swagger-ui/**",
+	        "/webjars/**");
+	}
+	
 	@Bean
 	@Override
 	protected AuthenticationManager authenticationManager() throws Exception {

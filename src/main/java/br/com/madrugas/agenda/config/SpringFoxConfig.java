@@ -1,6 +1,5 @@
 package br.com.madrugas.agenda.config;
 
-import java.util.Collections;
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
@@ -18,8 +17,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SpringFoxConfig {
     @Bean
     public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2).securitySchemes(Arrays.asList(new ApiKey("Autenticao", HttpHeaders.AUTHORIZATION, In.HEADER.name())))
-          .select()                                  
+        return new Docket(DocumentationType.SWAGGER_2).securitySchemes(Arrays.asList(new ApiKey("Autenticação", HttpHeaders.AUTHORIZATION, In.HEADER.name()))) //Arrays.asList(new ApiKey("Autentição", HttpHeaders.AUTHORIZATION, In.HEADER.name())))
+          .select()
           .apis(RequestHandlerSelectors.basePackage("br.com.madrugas.agenda.controller"))
           .paths(PathSelectors.any())
           .build();
